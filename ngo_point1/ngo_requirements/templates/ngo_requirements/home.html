@@ -1,0 +1,85 @@
+{% extends 'ngo_requirements/base.html' %}
+{% load static %}
+
+{% block style %}
+
+<style>
+    .requirement-container{
+        border: 1px solid lightgrey ;
+        background-color: white;
+        /* border-radius: 5px; */
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    body{
+        background-color: whitesmoke;
+    }
+
+    .btn{
+        background-color: #A0E7E5;
+        color: darkgrey;
+    }
+    .by{
+        font-size: 12px;
+        color: gray;
+    }
+
+    .title{
+        font-style: italic;
+        color: darkgray;
+        font-size: 24px;
+        padding-top: 15px;
+        padding-left: 10px;
+    }
+</style>
+
+{% endblock style %}
+
+
+
+
+{% block content %}
+{% include 'ngo_requirements/navbar.html' %}
+
+    <div class="container">
+        
+        <p class="title">Some People need you...</p>
+        {% if requirements %}
+        <div class="row">
+            
+        {% for r in requirements %}
+            
+                
+                    <div class="col-12 col-sm-6 col-md-4">
+
+                        <div class="m-3 p-4 requirement-container">
+                            <h5><b>{{r.requirement_heading}}</b></h5>
+                            <p>{{r.requirement_content}}</p>
+                            <!-- <p class='by'>by Aapka Sahara Foundation</p> -->
+                            <div class="row"><div class="col-12"><p class='by'>by {{r.ngo}}</p></div></div>
+                            <div class="row"><div class="col-12"><a href="" ><p>View</p></a></div></div>
+                            <button class="btn btn-sm ">Donate Now</button>
+                        </div>
+                    </div>
+                
+            
+
+        {% endfor %}
+        </div>
+        
+        {% else %}
+
+
+        <h1>No requirements</h1>
+
+
+
+        {% endif %}
+
+    </div>
+        
+
+
+
+
+ {% endblock content %}
