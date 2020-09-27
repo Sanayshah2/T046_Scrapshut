@@ -1,7 +1,7 @@
 from django.db.models import Q
 from rest_framework import generics, mixins
 from ngo_requirements.models import *
-from .serializers import RequirementSerializer
+from .serializers import *
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -11,11 +11,19 @@ from rest_framework.response import Response
 @api_view(['GET'])
 def apiOverview(request):
 	api_urls = {
-		'RequirementList':'/requirementlist/',
+		'Requirement List':'/requirementlist/',
 		'Detail Requirement List':'/requirementlist/<str:username>/',
+        'Category List':'/categorylist/',
 		}
 
 	return Response(api_urls) 
+
+class CategoryList(generics.ListAPIView):
+    serializer_class = CategorySerializer
+
+    def get_queryset(self):
+        return Help_category.objects.all()
+    
 
 class NgoRequirementList(generics.ListAPIView):
     serializer_class = RequirementSerializer

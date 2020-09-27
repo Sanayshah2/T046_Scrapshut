@@ -15,3 +15,11 @@ class RequirementSerializer(serializers.ModelSerializer):
         ]
         read_only_fields = ['pk']
 
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Help_category
+        fields = [
+            'pk',
+            'help_category', 
+        ]
+        read_only_fields = ['pk']
