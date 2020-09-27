@@ -1,0 +1,106 @@
+{% extends 'ngo_requirements/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block style %}
+
+<style>
+    .requirement-container{
+        border: 1px solid lightgrey ;
+        background-color: white;
+        /* border-radius: 5px; */
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    body{
+        background-color: whitesmoke;
+    }
+
+    .btn{
+        background-color: #A0E7E5;
+        color: darkgrey;
+    }
+    .by{
+        font-size: 12px;
+        color: gray;
+    }
+
+    .title{
+
+        font-weight: bold;
+    }
+</style>
+
+{% endblock style %}
+{% block content %}
+{% include 'ngo_requirements/ngo_sidebar.html' %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js" integrity="sha256-JtQPj/3xub8oapVMaIijPNoM0DHoAtgh/gwFYuN5rik=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" integrity="sha256-jDnOKIOq2KNsQZTcBTEnsp76FnfMEttF6AV2DF2fFNE=" crossorigin="anonymous"></script>
+        
+
+ 
+        
+
+      <!-- Page content -->
+      <div class="content ">
+        
+         
+        {% if messages %}
+        {% for x in messages %}
+                <div class="alert alert-custom  fade in alert-dismissable show " style="margin-top:18px;background-color: rgb(99, 99, 99);color: whitesmoke;font-weight: bold;font-size: 15px;">
+                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true" style="font-size:20px">×</span>
+                  </button><center>{{x}}</center>
+                </div>
+         {% endfor %}
+     {% endif %}
+
+
+     <div class="container">
+        
+      <!-- <p class="title">Some People need you...</p> -->
+      <h4 class="pb-3 pt-3 title">Requirements History</h4>
+      {% if requirements %}
+      <div class="row">
+        
+          
+      {% for r in requirements %}
+          
+              
+                  <div class="col-12 col-sm-6 col-md-4">
+
+                      <div class="m-3 p-4 requirement-container">
+                          <h5><b>{{r.requirement_heading}}</b></h5>
+                          <p>{{r.requirement_content}}</p>
+                          <!-- <p class='by'>by Aapka Sahara Foundation</p> -->
+                          <div class="row"><div class="col-12"><p class='by'>by {{r.ngo}}</p></div></div>
+                          <div class="row"><div class="col-12"><a href="/ngo-requirement-view/{{r.id}}/" ><p>View details</p></a></div></div>
+                          <!-- <button class="btn btn-sm ">Donate Now</button> -->
+                      </div>
+                  </div>
+              
+          
+
+      {% endfor %}
+      </div>
+      
+      {% else %}
+
+
+      <h1>No requirements</h1>
+
+
+
+      {% endif %}
+
+  </div>
+                
+                
+
+
+              </div >
+        
+
+
+{% endblock content %}

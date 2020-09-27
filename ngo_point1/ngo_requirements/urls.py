@@ -8,9 +8,14 @@ urlpatterns = [
     path('',views.home,name='home'),
     path('register/',views.register,name='register'),
     path('login/',views.Login,name='login'),
-    path('<username>/donordashboard/',views.donordashboard,name='donordashboard'),
-    path('<username>/ngodashboard/',views.ngodashboard,name='ngodashboard'),
+
     path('logout/', views.logout_view, name='logout_view'),
+    path('add-requirement/', views.addRequirement, name='addRequirement'),
+    path('ngo-dashboard/', views.ngoDashboard, name='ngoDashboard'),
+    path('ngo-requirement-view/<int:rid>/', views.ngoRequirementView, name='ngoRequirementView'),
+    path('donor-requirement-view/<int:rid>/', views.donorRequirementView, name='donorRequirementView'),
+    path('donor-dashboard/', views.donorDashboard, name='donorDashboard'),
+    path('requirement-fulfillment/<int:rid>/', views.requirement_fulfillment, name='requirement_fulfillment'),
 
 
 
